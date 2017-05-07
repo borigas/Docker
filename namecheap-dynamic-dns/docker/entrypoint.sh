@@ -3,6 +3,7 @@
 echo "Starting..."
 
 while [ : ]; do
+    echo "----  $(date)  ----"
     domainOptions=$(echo "$DOMAIN_ARGS" | tr ';' '\n')
     
     for currentOptions in $domainOptions; do
@@ -19,9 +20,10 @@ while [ : ]; do
         
         echo "Url: $url"
         curl "$url"
+        echo ""
     done
     
-    echo "Done. Sleeping..."
+    echo "Done. Sleeping for $INTERVAL seconds..."
     echo "============================================="
     
     sleep $INTERVAL
