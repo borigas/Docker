@@ -28,7 +28,8 @@ for siteConfig in /etc/nginx/sites-available/*; do
         certbot certonly  --text --non-interactive --rsa-key-size $RSA_KEY_SIZE \
                         --email $LETSENCRYPT_EMAIL --agree-tos --expand \
                         --webroot --webroot-path=/var/www/letsencrypt \
-                        --reinstall $SUBDOMAINS_ARGS
+                        --reinstall $SUBDOMAINS_ARGS \
+                        --renew-hook "/etc/init.d/nginx restart"
         echo "Done generating certificate"
     fi
     
