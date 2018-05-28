@@ -1,3 +1,3 @@
 Run with:
 
-`docker run --restart=always -d --name plex --network=host -e TZ="US/Central" -v /mnt/PlexConfig:/config -v /mnt/DockerData/Plex/Transcode:/transcode -v /mnt/PlexMedia:/data plexinc/pms-docker`
+`docker run --restart=always -d --name plex --network=host -e TZ="US/Central" -v /home/ben/Plex/config:/config -v /home/ben/Plex/transcode:/transcode -v /media/PlexMedia:/data plexinc/pms-docker`
