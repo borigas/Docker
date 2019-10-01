@@ -51,6 +51,8 @@ services:
 
   nginx:
     container_name: nginx
+    # This image isn't building for some reason. Use the repo
+    #build: letsencrypt-reverse-proxy
     image: borigas/letsencrypt-reverse-proxy
     restart: always
     ports:
@@ -64,7 +66,8 @@ services:
 
   namecheap-dynamic-dns:
     container_name: ddns
-    image: borigas/namecheap-dynamic-dns
+    build: namecheap-dynamic-dns
+    #image: borigas/namecheap-dynamic-dns
     restart: always
     environment:
       - DOMAIN_ARGS=@,domain1.org,[DDNS Password];@,domain2.com,[DDNS Password]
