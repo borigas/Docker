@@ -51,9 +51,9 @@ services:
 
   nginx:
     container_name: nginx
+    build: letsencrypt-reverse-proxy
     # This image isn't building for some reason. Use the repo
-    #build: letsencrypt-reverse-proxy
-    image: borigas/letsencrypt-reverse-proxy
+    #image: borigas/letsencrypt-reverse-proxy
     restart: always
     ports:
       - 80:80
