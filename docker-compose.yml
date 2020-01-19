@@ -63,14 +63,13 @@ services:
       - /media/DockerData/Nginx/Sites:/etc/nginx/sites-available
     environment:
       - LETSENCRYPT_EMAIL="myemail@gmail.com"
-
-  namecheap-dynamic-dns:
-    container_name: ddns
-    build: namecheap-dynamic-dns
-    #image: borigas/namecheap-dynamic-dns
+  
+  cloudflare-dynamic-dns:
+    container_name: cloudflare-ddns
+    image: oznu/cloudflare-ddns
     restart: always
     environment:
-      - DOMAIN_ARGS=@,domain1.org,[DDNS Password];@,domain2.com,[DDNS Password]
+      - PROXIED=true
       
   watchtower:
     container_name: watchtower
