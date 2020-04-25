@@ -63,6 +63,44 @@ services:
       - /media/DockerData/Nginx/Sites:/etc/nginx/sites-available
     environment:
       - LETSENCRYPT_EMAIL="myemail@gmail.com"
+
+  # pihole:
+  #   container_name: pihole
+  #   image: pihole/pihole:latest
+  #   restart: always
+  #   ports:
+  #     - "53:53/tcp"
+  #     - "53:53/udp"
+  #     - "67:67/udp"
+  #     - "80:80/tcp"
+  #     - "443:443/tcp"
+  #   environment:
+  #     TZ: 'America/Chicago'
+  #     # WEBPASSWORD: 'set a secure password here or it will be random'
+  #   volumes:
+  #     - '/media/DockerData/Pihole/pihole/:/etc/pihole/'
+  #     - '/media/DockerData/Pihole/dnsmasq.d/:/etc/dnsmasq.d/'
+  #   dns:
+  #     - 127.0.0.1
+  #     - 1.1.1.1
+
+  adguard:
+    container_name: adguard
+    image: adguard/adguardhome
+    restart: always
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "68:68/tcp"
+      - "68:68/udp"
+      - "80:80/tcp"
+      - "443:443/tcp"
+      - "853:853/tcp"
+      - "3000:3000/tcp"
+    volumes:
+      - '/media/DockerData/Adguard/work:/opt/adguardhome/work'
+      - '/media/DockerData/Adguard/config:/opt/adguardhome/conf'
   
   cloudflare-dynamic-dns:
     container_name: cloudflare-ddns
