@@ -27,7 +27,7 @@ services:
       - /media/PlexMedia:/data
     environment:
       - OPENVPN_PROVIDER=PIA
-      - OPENVPN_CONFIG=Netherlands
+      - OPENVPN_CONFIG=netherlands
       - OPENVPN_USERNAME=overrideme
       - OPENVPN_PASSWORD=overrideme
       - WEBPROXY_ENABLED=false
