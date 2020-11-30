@@ -113,5 +113,8 @@ services:
     container_name: watchtower
     image: containrrr/watchtower
     restart: always
+    # Default interval of 5 min exhausts the pull rate limit (100 pulls / 6 hours) in 3 hours
+    # Change to update every 24 hours
+    command: watchtower --interval 86400
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
