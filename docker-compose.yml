@@ -108,6 +108,16 @@ services:
     restart: always
     environment:
       - PROXIED=true
+
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /media/DockerData/Portainer:/data
       
   watchtower:
     container_name: watchtower
