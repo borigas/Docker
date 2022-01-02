@@ -46,13 +46,6 @@ services:
       options:
         max-size: '10m'
 
-  transmission-rss:
-    container_name: transmission-rss
-    image: nning2/transmission-rss
-    restart: always
-    volumes:
-      - /media/DockerData/TransmissionRss/transmission-rss.conf:/etc/transmission-rss.conf
-
   nginx:
     container_name: nginx
     build: letsencrypt-reverse-proxy
