@@ -124,3 +124,25 @@ services:
     ports:
       - 9117:9117
     restart: unless-stopped
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:develop
+    container_name: prowlarr
+    environment:
+      - TZ="US/Central"
+    volumes:
+      - /home/ben/Prowlarr/config:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+
+  overseerr:
+    image: lscr.io/linuxserver/overseerr
+    container_name: overseerr
+    environment:
+      - TZ="US/Central"
+    volumes:
+      - /home/ben/Overseerr/config:/config
+    ports:
+      - 5055:5055
+    restart: unless-stopped
