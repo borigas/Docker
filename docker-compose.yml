@@ -146,3 +146,35 @@ services:
     ports:
       - 5055:5055
     restart: unless-stopped
+
+  ytdl-material:
+    restart: unless-stopped
+    container_name: ytdl-material
+    environment: 
+        ALLOW_CONFIG_MUTATIONS: 'true'
+        ytdl_mongodb_connection_string: 'mongodb://ytdl-mongo-db:27017'
+        ytdl_use_local_db: 'false'
+        write_ytdl_config: 'true'
+    restart: always
+    depends_on:
+        - ytdl-mongo-db
+    volumes:
+        - /home/ben/Youtubedl-Material/appdata:/app/appdata
+        - /home/ben/Youtubedl-Material/subscriptions:/app/subscriptions
+        - /home/ben/Youtubedl-Material/audio:/app/audio
+        - /media/PlexMedia/Videos/YoutubeDl-Users:/app/users
+        - /media/PlexMedia/Videos/YoutubeDl:/app/video
+    ports:
+        - "8998:17442"
+    image: tzahi12345/youtubedl-material:nightly
+  ytdl-mongo-db:
+    restart: unless-stopped
+    container_name: ytdl-mongo-db
+    image: mongo
+    ports:
+        - "27017:27017"
+    logging:
+        driver: "none"
+    restart: always
+    volumes:
+        - /home/ben/Youtubedl-Material/db/:/data/db
